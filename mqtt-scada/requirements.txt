@@ -1,0 +1,4 @@
+dataclass_jsonable==0.0.12
+flask
+paho-mqtt
+protobuf==3.20.*

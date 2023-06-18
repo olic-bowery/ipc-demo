@@ -1,0 +1,26 @@
+services:
+  driver: 
+    build: ./driver
+    container_name: driver-service
+    privileged: true
+    ports: 
+      - "9090:9090"
+    command: python3 main.py
+    environment:
+      - PYTHONUNBUFFERED=1
+  mqtt-scada: 
+    build: ./mqtt-scada
+    container_name: mqtt-scada-service
+    ports: 
+      - "9091:9091"
+    command: python3 main.py
+    environment:
+      - PYTHONUNBUFFERED=1
+  node-red:
+    image: nodered/node-red:latest
+    privileged: true
+    container_name: node-red
+    ports:
+      - "1880:1880"
+    volumes:
+      - /data:/data
